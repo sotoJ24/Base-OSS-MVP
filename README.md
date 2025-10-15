@@ -10,3 +10,5 @@ To make things happen, we will work directly with Base / Coinbase core team, esp
 - Repos from builders from Base (after fill in a form)
 
 **Deliverables**: one app and a mini-app (or directly a mini-app)
+
+Built for Base Ecosystem 🔵
