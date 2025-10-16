@@ -37,6 +37,8 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 ## Pure On-Chain Storage (Structure)
 
 ### How Data Flows
+
+```bash
 User Action (Frontend)
     ↓
 Sign Transaction (Privy Wallet)
@@ -44,6 +46,6 @@ Sign Transaction (Privy Wallet)
 Smart Contract on Base (Data Storage)
     ↓
 Read Back from Contract (Display in UI)
-
+```
 
 Built for Base Ecosystem 🔵
