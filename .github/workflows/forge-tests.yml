@@ -1,0 +1,26 @@
+name: Forge Tests
+
+on:
+  pull_request:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  test-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: stable
+
+      - name: Run forge tests (contracts)
+        working-directory: base-oss-app/contracts
+        run: |
+          forge --version
+          forge test --match-path 'test/*' -vvv
