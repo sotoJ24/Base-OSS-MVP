@@ -1,0 +1,23 @@
+{
+  "network": "base-sepolia",
+  "chainId": 84532,
+  "deployedAt": "2024-01-15T10:30:00Z",
+  "deployer": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb5",
+  "contracts": {
+    "ProfileRegistry": {
+      "address": "0x1234567890123456789012345678901234567890",
+      "deploymentBlock": 12345678,
+      "deploymentTx": "0xabcdef...",
+      "verified": true,
+      "basescan": "https://sepolia.basescan.org/address/0x1234..."
+    },
+    "RepoRegistry": {
+      "address": "0x2345678901234567890123456789012345678901",
+      "deploymentBlock": 12345679,
+      "deploymentTx": "0xbcdefg...",
+      "verified": true,
+      "basescan": "https://sepolia.basescan.org/address/0x2345..."
+    }
+  
+  }
+}

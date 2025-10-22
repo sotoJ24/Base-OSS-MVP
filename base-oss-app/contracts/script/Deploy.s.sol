@@ -129,22 +129,65 @@ contract DeployScript is Script {
     }
     
     /**
-     * @dev Save deployment addresses to a JSON file
+     * @dev Save deployment addresses to JSON files
      */
     function _saveDeploymentInfo() internal {
+        address deployer = vm.addr(vm.envUint("PRIVATE_KEY"));
+        
+        // Determine network name
+        string memory network = block.chainid == 84532 ? "base-sepolia" : 
+                               block.chainid == 8453 ? "base-mainnet" : 
+                               "localhost";
+        
+        // Create detailed JSON
         string memory json = string.concat(
             '{\n',
-            '  "profileRegistry": "', vm.toString(address(profileRegistry)), '",\n',
-            '  "repoRegistry": "', vm.toString(address(repoRegistry)), '",\n',
-            '  "applicationManager": "', vm.toString(address(applicationManager)), '",\n',
-            '  "tipJar": "', vm.toString(address(tipJar)), '",\n',
-            '  "deployer": "', vm.toString(vm.addr(vm.envUint("PRIVATE_KEY"))), '",\n',
-            '  "chainId": "', vm.toString(block.chainid), '",\n',
-            '  "timestamp": "', vm.toString(block.timestamp), '"\n',
+            '  "network": "', network, '",\n',
+            '  "chainId": ', vm.toString(block.chainid), ',\n',
+            '  "deployedAt": "', vm.toString(block.timestamp), '",\n',
+            '  "deployer": "', vm.toString(deployer), '",\n',
+            '  "contracts": {\n',
+            '    "ProfileRegistry": {\n',
+            '      "address": "', vm.toString(address(profileRegistry)), '"\n',
+            '    },\n',
+            '    "RepoRegistry": {\n',
+            '      "address": "', vm.toString(address(repoRegistry)), '"\n',
+            '    },\n',
+            '    "ApplicationManager": {\n',
+            '      "address": "', vm.toString(address(applicationManager)), '"\n',
+            '    },\n',
+            '    "TipJar": {\n',
+            '      "address": "', vm.toString(address(tipJar)), '"\n',
+            '    }\n',
+            '  }\n',
             '}'
         );
         
+        // Save to latest.json
         vm.writeFile("deployments/latest.json", json);
-        console.log("Deployment info saved to: deployments/latest.json");
+        console.log("Saved to: deployments/latest.json");
+        
+        // Save to network-specific file
+        string memory networkFile = string.concat("deployments/", network, ".json");
+        vm.writeFile(networkFile, json);
+        console.log("Saved to:", networkFile);
+        
+        // Create TypeScript file
+        string memory tsContent = string.concat(
+            '// Auto-generated contract addresses\n',
+            '// Network: ', network, '\n',
+            '// Deployed: ', vm.toString(block.timestamp), '\n\n',
+            'export const CONTRACTS = {\n',
+            '  profileRegistry: "', vm.toString(address(profileRegistry)), '" as `0x${string}`,\n',
+            '  repoRegistry: "', vm.toString(address(repoRegistry)), '" as `0x${string}`,\n',
+            '  applicationManager: "', vm.toString(address(applicationManager)), '" as `0x${string}`,\n',
+            '  tipJar: "', vm.toString(address(tipJar)), '" as `0x${string}`,\n',
+            '} as const;\n\n',
+            'export const CHAIN_ID = ', vm.toString(block.chainid), ';\n',
+            'export const DEPLOYER = "', vm.toString(deployer), '" as `0x${string}`;\n'
+        );
+        
+        vm.writeFile("deployments/addresses.ts", tsContent);
+        console.log("Saved to: deployments/addresses.ts");
     }
 }
