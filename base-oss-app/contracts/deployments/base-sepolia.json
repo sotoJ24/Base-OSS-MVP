@@ -1,23 +1,100 @@
 {
   "network": "base-sepolia",
   "chainId": 84532,
-  "deployedAt": "2024-01-15T10:30:00Z",
-  "deployer": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb5",
+  "deployedAt": "2025-01-15T10:30:00Z",
+  "deployer": "0x28c61eeEB82adAC0040895b990A68Eb099423886",
+  "rpcUrl": "https://sepolia.base.org",
+  "blockExplorer": "https://sepolia.basescan.org",
   "contracts": {
     "ProfileRegistry": {
-      "address": "0x1234567890123456789012345678901234567890",
-      "deploymentBlock": 12345678,
-      "deploymentTx": "0xabcdef...",
-      "verified": true,
-      "basescan": "https://sepolia.basescan.org/address/0x1234..."
+      "address": "0xe079D9E09cD3DF1FDd438c1750dD54bDFED3544B",
+      "verified": false,
+      "basescan": "https://sepolia.basescan.org/address/0xe079D9E09cD3DF1FDd438c1750dD54bDFED3544B",
+      "description": "Manages user profiles and reputation for contributors and maintainers"
     },
     "RepoRegistry": {
-      "address": "0x2345678901234567890123456789012345678901",
-      "deploymentBlock": 12345679,
-      "deploymentTx": "0xbcdefg...",
-      "verified": true,
-      "basescan": "https://sepolia.basescan.org/address/0x2345..."
+      "address": "0x063E5d4a52f8ea88Cf9aF6D460645baaA0B07D30",
+      "verified": false,
+      "basescan": "https://sepolia.basescan.org/address/0x063E5d4a52f8ea88Cf9aF6D460645baaA0B07D30",
+      "description": "Manages repositories and issues from Base ecosystem projects"
+    },
+    "ApplicationManager": {
+      "address": "0x645334169277627e46402d5c414E4917339552D9",
+      "verified": false,
+      "basescan": "https://sepolia.basescan.org/address/0x645334169277627e46402d5c414E4917339552D9",
+      "description": "Handles contributor applications to repository issues"
+    },
+    "TipJar": {
+      "address": "0xD97d645561cf2b972960e73125F04ea413a4d21f",
+      "verified": false,
+      "basescan": "https://sepolia.basescan.org/address/0xD97d645561cf2b972960e73125F04ea413a4d21f",
+      "description": "Manages tip payments to contributors with optional platform fees"
     }
-  
+  },
+  "permissions": {
+    "ProfileRegistry": {
+      "roles": {
+        "REPUTATION_UPDATER_ROLE": [
+          "0xD97d645561cf2b972960e73125F04ea413a4d21f"
+        ],
+        "ADMIN_ROLE": [
+          "0x28c61eeEB82adAC0040895b990A68Eb099423886"
+        ]
+      }
+    },
+    "RepoRegistry": {
+      "roles": {
+        "APPLICATION_MANAGER_ROLE": [
+          "0x645334169277627e46402d5c414E4917339552D9"
+        ],
+        "ADMIN_ROLE": [
+          "0x28c61eeEB82adAC0040895b990A68Eb099423886"
+        ]
+      }
+    },
+    "ApplicationManager": {
+      "roles": {
+        "ADMIN_ROLE": [
+          "0x28c61eeEB82adAC0040895b990A68Eb099423886"
+        ]
+      }
+    },
+    "TipJar": {
+      "roles": {
+        "ADMIN_ROLE": [
+          "0x28c61eeEB82adAC0040895b990A68Eb099423886"
+        ],
+        "PAUSER_ROLE": [
+          "0x28c61eeEB82adAC0040895b990A68Eb099423886"
+        ]
+      },
+      "config": {
+        "feeCollector": "0x28c61eeEB82adAC0040895b990A68Eb099423886",
+        "platformFeePercentage": 0,
+        "minTipAmount": "1000000000000000"
+      }
+    }
+  },
+  "integrations": {
+    "ProfileRegistry_to_TipJar": "TipJar can update reputation scores",
+    "ApplicationManager_to_RepoRegistry": "ApplicationManager can assign issues"
+  },
+  "stats": {
+    "totalContracts": 4,
+    "totalDeploymentGas": "~11,320,000",
+    "estimatedCost": "~0.0025 ETH"
+  },
+  "notes": [
+    "All contracts deployed successfully on Base Sepolia",
+    "Permissions configured correctly during deployment",
+    "Contracts are not yet verified on Basescan - verify using Foundry",
+    "TipJar fee collector is set to deployer address",
+    "Platform fee is initially set to 0%",
+    "Minimum tip amount is 0.001 ETH"
+  ],
+  "quickLinks": {
+    "faucet": "https://www.coinbase.com/faucets/base-ethereum-sepolia-faucet",
+    "bridge": "https://bridge.base.org/deposit",
+    "docs": "https://docs.base.org"
   }
 }
