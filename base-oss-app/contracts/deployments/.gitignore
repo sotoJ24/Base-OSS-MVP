@@ -1,0 +1,11 @@
+out/
+cache/
+
+# Foundry deployment artifacts
+broadcast/
+
+# Environment variables
+.env
+
+# Keystores (if stored locally)
+keystores/
