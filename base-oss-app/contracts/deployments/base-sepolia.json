@@ -8,26 +8,26 @@
   "contracts": {
     "ProfileRegistry": {
       "address": "0xe079D9E09cD3DF1FDd438c1750dD54bDFED3544B",
-      "verified": false,
-      "basescan": "https://sepolia.basescan.org/address/0xe079D9E09cD3DF1FDd438c1750dD54bDFED3544B",
+      "verified": true,
+      "basescan": "https://base-sepolia.blockscout.com/address/0xe079D9E09cD3DF1FDd438c1750dD54bDFED3544B",
       "description": "Manages user profiles and reputation for contributors and maintainers"
     },
     "RepoRegistry": {
       "address": "0x063E5d4a52f8ea88Cf9aF6D460645baaA0B07D30",
-      "verified": false,
-      "basescan": "https://sepolia.basescan.org/address/0x063E5d4a52f8ea88Cf9aF6D460645baaA0B07D30",
+      "verified": true,
+      "basescan": "https://base-sepolia.blockscout.com/address/0x063E5d4a52f8ea88Cf9aF6D460645baaA0B07D30",
       "description": "Manages repositories and issues from Base ecosystem projects"
     },
     "ApplicationManager": {
       "address": "0x645334169277627e46402d5c414E4917339552D9",
-      "verified": false,
-      "basescan": "https://sepolia.basescan.org/address/0x645334169277627e46402d5c414E4917339552D9",
+      "verified": true,
+      "basescan": "https://base-sepolia.blockscout.com/address/0x645334169277627e46402d5c414E4917339552D9",
       "description": "Handles contributor applications to repository issues"
     },
     "TipJar": {
       "address": "0xD97d645561cf2b972960e73125F04ea413a4d21f",
-      "verified": false,
-      "basescan": "https://sepolia.basescan.org/address/0xD97d645561cf2b972960e73125F04ea413a4d21f",
+      "verified": true,
+      "basescan": "https://base-sepolia.blockscout.com/address/0xD97d645561cf2b972960e73125F04ea413a4d21f",
       "description": "Manages tip payments to contributors with optional platform fees"
     }
   },
