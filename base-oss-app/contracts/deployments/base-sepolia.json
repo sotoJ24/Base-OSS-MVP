@@ -2,7 +2,7 @@
   "network": "base-sepolia",
   "chainId": 84532,
   "deployedAt": "2025-01-15T10:30:00Z",
-  "deployer": "0x28c61eeEB82adAC0040895b990A68Eb099423886",
+  "deployer": "",
   "rpcUrl": "https://sepolia.base.org",
   "blockExplorer": "https://sepolia.basescan.org",
   "contracts": {
