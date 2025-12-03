@@ -1,5 +1,10 @@
 # Base-OSS-MVP
 
+
+# Problem we are solving:
+
+"Base ecosystem projects struggle to attract quality OSS contributors. Contributors struggle to find relevant issues matching their skills. We bridge this gap with on-chain reputation and x402-powered instant rewards."
+
 We will match OSS contributors with relevant OSS projects in the ecosystem.
 
 To make things happen, we will work directly with Base / Coinbase core team, especially on the following repo:
