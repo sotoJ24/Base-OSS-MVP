@@ -326,11 +326,3 @@ const payment = await x402Client.createPayment({
 - 🔄 **AgentKit** (planned) - AI-powered contributor-issue matching
 - ✅ **Base SDK** - Contract interactions via Viem
 
-### Partnership with Base Team
-
-We're working directly with Base/Coinbase on:
-- 🤝 **AgentKit** - Needs contributors for AI agent features
-- 🤝 **OnchainKit** - Needs frontend/React contributors
-- 🤝 **0x402** - Needs payment integration testing
-- 🤝 **Community Projects** - Open to all Base builders via submission form
-
