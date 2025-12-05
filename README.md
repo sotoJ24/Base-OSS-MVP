@@ -378,7 +378,7 @@ const payment = await x402Client.createPayment({
 
 ---
 
-## 🎯 Recommended Final Schema
+## 🎯 Current Schema
 ```
 profiles (Strong Entity - wallet_address PK)
     ↓ 1:M
