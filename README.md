@@ -326,3 +326,69 @@ const payment = await x402Client.createPayment({
 - 🔄 **AgentKit** (planned) - AI-powered contributor-issue matching
 - ✅ **Base SDK** - Contract interactions via Viem
 
+## 📊 Complete Entity-Relationship Diagram
+```
+┌─────────────┐
+│  PROFILES   │ ← Strong Entity (main user table)
+│ (wallet_addr│
+│  as PK)     │
+└──────┬──────┘
+       │
+       │ 1:M (maintains)
+       ▼
+┌─────────────┐
+│  PROJECTS   │ ← Strong Entity (independent)
+└──────┬──────┘
+       │
+       │ 1:M
+       ▼
+┌─────────────┐       ┌──────────────┐
+│REPOSITORIES │ 1:M   │    ISSUES    │ ← Weak Entity
+└──────┬──────┘───────►              │
+       │              └───┬──────────┘
+       │                  │
+       │ M:M              │ M:M
+       │ (via             │ (via
+       │  applications)   │  tips)
+       │                  │
+       ▼                  ▼
+┌──────────────┐   ┌──────────────┐
+│ APPLICATIONS │   │     TIPS     │ ← Junction Tables
+│ (junction)   │   │  (junction)  │
+└──────────────┘   └──────────────┘
+       ▲                  ▲
+       │                  │
+       │ M:M              │ M:M
+       │                  │
+       └──────────────────┘
+              PROFILES
+```
+
+---
+
+## ✅ Summary: Your Assessment
+
+| Table | Your Assessment | Correct? | Actual Type |
+|-------|----------------|----------|-------------|
+| `profile_registry.sql` | Depends on User | ⚠️ | **Strong Entity** (primary user table) |
+| `application_manager.sql` | Tracks users | ✅ | **Junction Table** (profiles ↔ issues) |
+| `projects.sql` | About projects | ✅ | **Strong Entity** |
+| `repo_registry.sql` | Related to projects | ✅ | **Weak Entity** (depends on projects) |
+| `tip_jar.sql` | Weak, M:M relationship | ✅ | **Junction Table** (profiles ↔ issues) |
+
+---
+
+## 🎯 Recommended Final Schema
+```
+profiles (Strong Entity - wallet_address PK)
+    ↓ 1:M
+projects (Strong Entity)
+    ↓ 1:M
+repositories (Weak Entity)
+    ↓ 1:M
+issues (Weak Entity)
+    ↓ M:M (via applications)
+applications (Junction Table)
+    ↓ M:M (via tips)
+tips (Junction Table)
+
